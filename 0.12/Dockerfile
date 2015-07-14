@@ -10,7 +10,7 @@ RUN tce-load -wic gnupg curl \
 # gpg: aka "Julien Gilli <jgilli@fastmail.fm>"
 RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys 7937DFD2AB06298B2293C3187D33FF9D0246406D 114F43EE0176B71C7BC219DD50A3051F888C628D
 
-ENV NODE_VERSION 0.12.6
+ENV NODE_VERSION 0.12.7
 ENV NPM_VERSION 2.11.3
 
 RUN tce-load -wic coreutils \
