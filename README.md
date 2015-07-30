@@ -5,7 +5,7 @@ This provides a small but a fully functional [Node.js](https://nodejs.org/) runt
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`0.12` (0.12/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/Dockerfile)
+- [`0.12`, `latest` (0.12/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/Dockerfile)
 - [`0.12-onbuild` (0.12/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/onbuild/Dockerfile)
 
 ## How to use this image
