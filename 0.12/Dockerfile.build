@@ -1,0 +1,83 @@
+FROM tinycore-python:2.7
+
+# Instructions are run with 'tc' user
+USER tc
+
+RUN tce-load -wic gnupg curl coreutils \
+    && rm -rf /tmp/tce/optional/*
+
+# verify gpg and sha256: http://nodejs.org/dist/v0.10.30/SHASUMS256.txt.asc
+# gpg: aka "Timothy J Fontaine (Work) <tj.fontaine@joyent.com>"
+# gpg: aka "Julien Gilli <jgilli@fastmail.fm>"
+RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys 7937DFD2AB06298B2293C3187D33FF9D0246406D 114F43EE0176B71C7BC219DD50A3051F888C628D
+
+ENV NODE_VERSION 0.12.1
+ENV NPM_VERSION 2.7.3
+
+RUN tce-load -wic \
+        file \
+        flex \
+        gcc \
+        make \
+        linux-3.16.2_api_headers \
+        glibc_base-dev \
+    && cd /tmp \
+    && curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v${NODE_VERSION}.tar.gz" \
+    && curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg2 --verify SHASUMS256.txt.asc \
+    && grep " node-v${NODE_VERSION}.tar.gz" SHASUMS256.txt.asc | sha256sum -c - \
+    && tar -xzf "node-v${NODE_VERSION}.tar.gz" \
+    && rm -f "node-v${NODE_VERSION}.tar.gz" SHASUMS256.txt.asc \
+    && cd "/tmp/node-v$NODE_VERSION" \
+    && ./configure --prefix=/usr/local \
+    && make \
+    && mkdir tmp_install \
+    && make install DESTDIR=tmp_install \
+    && for F in `find tmp_install | xargs file | grep "executable" | grep ELF | grep "not stripped" | cut -f 1 -d :`; do \
+            [ -f $F ] && strip --strip-unneeded $F; \
+        done \
+    && for F in `find tmp_install | xargs file | grep "shared object" | grep ELF | grep "not stripped" | cut -f 1 -d :`; do \
+            [ -f $F ] && strip -g $F; \
+        done \
+    && for F in `find tmp_install | xargs file | grep "current ar archive" | cut -f 1 -d :`; do \
+            [ -f $F ] && strip -g $F; \
+        done \
+    && $(cd tmp_install; sudo cp -R . /) \
+    && cd / \
+    && rm -rf "/tmp/node-v$NODE_VERSION" \
+    && cd /tmp/tce/optional \
+    && for PKG in `ls *-dev.tcz`; do \
+            echo "Removing $PKG files"; \
+            for F in `unsquashfs -l $PKG | grep squashfs-root | sed -e 's/squashfs-root//'`; do \
+                [ -f $F -o -L $F ] && sudo rm -f $F; \
+            done; \
+            INSTALLED=$(echo -n $PKG | sed -e s/.tcz//); \
+            sudo rm -f /usr/local/tce.installed/$INSTALLED; \
+        done \
+    && for PKG in binutils.tcz \
+                acl.tcz \
+                libcap.tcz \
+                coreutils.tcz \
+                cloog.tcz \
+                file.tcz \
+                flex.tcz \
+                gcc.tcz \
+                gcc_libs.tcz \
+                linux-3.16.2_api_headers.tcz \
+                make.tcz; do \
+            echo "Removing $PKG files"; \
+            for F in `unsquashfs -l $PKG | grep squashfs-root | sed -e 's/squashfs-root//'`; do \
+                [ -f $F -o -L $F ] && sudo rm -f $F; \
+            done; \
+            INSTALLED=$(echo -n $PKG | sed -e s/.tcz//); \
+            sudo rm -f /usr/local/tce.installed/$INSTALLED; \
+        done \
+    && sudo /sbin/ldconfig \
+    && rm -rf /tmp/tce/optional/* \
+    && sudo npm install -g npm@"$NPM_VERSION" \
+    && sudo npm cache clear
+
+# Instructions after here are run with 'root' user
+USER root
+
+CMD ["node"]
