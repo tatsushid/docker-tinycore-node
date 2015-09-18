@@ -7,7 +7,7 @@ This provides a small but a fully functional [Node.js](https://nodejs.org/) runt
 
 - [`0.12` (0.12/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/Dockerfile)
 - [`0.12-onbuild` (0.12/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/onbuild/Dockerfile)
-- [`4.0` (4.0/Dockerfile)(https://github.com/tatsushid/docker-tinycore-node/blob/master/4.0/Dockerfile)
+- [`4.0` (4.0/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.0/Dockerfile)
 - [`4.0-onbuild` (4.0/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.0/onbuild/Dockerfile)
 - [`4.1`, `latest` (4.1/Dockerfile)][Latest Dockerfile]
 - [`4.1-onbuild` (4.1/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.1/onbuild/Dockerfile)
