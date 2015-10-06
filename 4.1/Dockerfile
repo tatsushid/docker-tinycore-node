@@ -14,7 +14,7 @@ RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys \
     71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \
     DD8F2338BAE7501E3DD5AC78C273792F7D83545D
 
-ENV NODE_VERSION 4.1.0
+ENV NODE_VERSION 4.1.2
 
 RUN tce-load -wic coreutils \
         binutils \
