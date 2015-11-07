@@ -15,7 +15,7 @@ RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys \
     DD8F2338BAE7501E3DD5AC78C273792F7D83545D
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 4.2.1
+ENV NODE_VERSION 4.2.2
 
 RUN tce-load -wic coreutils \
         binutils \
