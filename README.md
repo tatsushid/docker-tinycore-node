@@ -7,16 +7,8 @@ This provides a small but a fully functional [Node.js](https://nodejs.org/) runt
 
 - [`0.12` (0.12/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/Dockerfile)
 - [`0.12-onbuild` (0.12/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/onbuild/Dockerfile)
-- [`4.0` (4.0/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.0/Dockerfile)
-- [`4.0-onbuild` (4.0/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.0/onbuild/Dockerfile)
-- [`4.1` (4.1/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.1/Dockerfile)
-- [`4.1-onbuild` (4.1/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.1/onbuild/Dockerfile)
 - [`4.2` (4.2/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.2/Dockerfile)
 - [`4.2-onbuild` (4.2/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.2/onbuild/Dockerfile)
-- [`5.0` (5.0/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/5.0/Dockerfile)
-- [`5.0-onbuild` (5.0/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/5.0/onbuild/Dockerfile)
-- [`5.1` (5.1/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/5.1/Dockerfile)
-- [`5.1-onbuild` (5.1/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/5.1/onbuild/Dockerfile)
 - [`5.2`, `latest` (5.2/Dockerfile)][Latest Dockerfile]
 - [`5.2-onbuild` (5.2/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/5.2/onbuild/Dockerfile)
 
