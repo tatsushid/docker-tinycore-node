@@ -1,5 +1,5 @@
-NODE_DIRS := 5.3 4.2 0.12
-ONBUILD_DIRS := 5.3/onbuild 4.2/onbuild 0.12/onbuild
+NODE_DIRS := 5.4 4.2 0.12
+ONBUILD_DIRS := 5.4/onbuild 4.2/onbuild 0.12/onbuild
 
 .PHONY: all clean $(NODE_DIRS) $(ONBUILD_DIRS)
 
