@@ -1,4 +1,4 @@
-FROM tatsushid/tinycore-node:5.4
+FROM tatsushid/tinycore-node:5.5
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
