@@ -11,7 +11,6 @@ RUN tce-load -wic gnupg curl \
 RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys 7937DFD2AB06298B2293C3187D33FF9D0246406D 114F43EE0176B71C7BC219DD50A3051F888C628D
 
 ENV NODE_VERSION 0.12.7
-ENV NPM_VERSION 2.14.1
 
 RUN tce-load -wic coreutils \
         binutils \
@@ -44,9 +43,7 @@ RUN tce-load -wic coreutils \
             INSTALLED=$(echo -n $PKG | sed -e s/.tcz//); \
             sudo rm -f /usr/local/tce.installed/$INSTALLED; \
         done \
-    && rm -rf /tmp/tce/optional/* \
-    && sudo npm install -g npm@"$NPM_VERSION" \
-    && sudo npm cache clear
+    && rm -rf /tmp/tce/optional/*
 
 # Instructions after here are run with 'root' user
 USER root
