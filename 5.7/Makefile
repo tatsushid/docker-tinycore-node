@@ -1,5 +1,5 @@
 IMAGE_NAME := tinycore-node
-IMAGE_TAG := 5.6
+IMAGE_TAG := 5.7
 
 .PHONY: all clean build
 
