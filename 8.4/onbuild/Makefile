@@ -1,5 +1,5 @@
 IMAGE_NAME := tinycore-node
-IMAGE_TAG := 7.10
+IMAGE_TAG := 8.4-onbuild
 
 .PHONY: all clean build
 
