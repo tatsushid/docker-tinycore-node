@@ -1,8 +1,8 @@
-FROM tatsushid/tinycore:7.2-x86_64
+FROM tatsushid/tinycore:8.0-x86_64
 
 # Instructions are run with 'tc' user
 
-RUN tce-load -wic gnupg curl \
+RUN tce-load -wic gnupg curl bzip2-lib sqlite3 readline \
     && rm -rf /tmp/tce/optional/*
 
 # gpg keys listed at https://github.com/nodejs/node
