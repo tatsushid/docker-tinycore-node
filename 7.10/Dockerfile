@@ -17,10 +17,12 @@ RUN gpg2 --keyserver pgp.mit.edu \
     DD8F2338BAE7501E3DD5AC78C273792F7D83545D \
     B9AE9905FFD7803F25714661B63B535A4C206CA9 \
     C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
-    56730D5401028683275BD23C23EFEFE93C4CFFFE
+    56730D5401028683275BD23C23EFEFE93C4CFFFE \
+    6A010C5166006599AA17F08146C2130DFD2497F5 # yarn gpg key
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 7.10.1
+ENV YARN_VERSION 0.24.4
 
 RUN tce-load -wic coreutils \
         binutils \
@@ -40,6 +42,17 @@ RUN tce-load -wic coreutils \
     && cd / \
     && sudo ln -s /lib /lib64 \
     && rm -rf "/tmp/node-v${NODE_VERSION}-linux-x64" \
+    && cd /tmp \
+    && curl -SLO "https://yarnpkg.com/downloads/${YARN_VERSION}/yarn-v${YARN_VERSION}.tar.gz" \
+    && curl -SLO "https://yarnpkg.com/downloads/${YARN_VERSION}/yarn-v${YARN_VERSION}.tar.gz.asc" \
+    && gpg2 --verify "yarn-v${YARN_VERSION}.tar.gz.asc" \
+    && tar -xzf "yarn-v${YARN_VERSION}.tar.gz" \
+    && rm -rf "yarn-v${YARN_VERSION}.tar.gz" "yarn-v${YARN_VERSION}.tar.gz.asc" \
+    && cd /tmp/dist \
+    && sudo cp -p bin/yarn bin/yarn.js bin/yarnpkg /usr/local/bin/ \
+    && sudo cp -p lib/* /usr/local/lib/ \
+    && cd / \
+    && rm -rf /tmp/dist \
     && cd /tmp/tce/optional \
     && for PKG in acl.tcz \
                 libcap.tcz \

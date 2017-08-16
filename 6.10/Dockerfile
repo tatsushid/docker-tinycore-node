@@ -6,7 +6,10 @@ RUN tce-load -wic gnupg curl bzip2-lib sqlite3 readline \
     && rm -rf /tmp/tce/optional/*
 
 # gpg keys listed at https://github.com/nodejs/node
-RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys \
+RUN gpg2 --keyserver pgp.mit.edu \
+        --keyserver keyserver.pgp.com \
+        --keyserver ha.pool.sks-keyservers.net \
+        --recv-keys \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
     94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
     0034A06D9D9B0064CE8ADF6BF1747F4AD2306D93 \
@@ -14,10 +17,12 @@ RUN gpg2 --keyserver pool.sks-keyservers.net --recv-keys \
     71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \
     DD8F2338BAE7501E3DD5AC78C273792F7D83545D \
     C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
-    B9AE9905FFD7803F25714661B63B535A4C206CA9
+    B9AE9905FFD7803F25714661B63B535A4C206CA9 \
+    6A010C5166006599AA17F08146C2130DFD2497F5 # yarn gpg key
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.11.2
+ENV YARN_VERSION 0.27.5
 
 RUN tce-load -wic coreutils \
         binutils \
@@ -37,6 +42,17 @@ RUN tce-load -wic coreutils \
     && cd / \
     && sudo ln -s /lib /lib64 \
     && rm -rf "/tmp/node-v${NODE_VERSION}-linux-x64" \
+    && cd /tmp \
+    && curl -SLO "https://yarnpkg.com/downloads/${YARN_VERSION}/yarn-v${YARN_VERSION}.tar.gz" \
+    && curl -SLO "https://yarnpkg.com/downloads/${YARN_VERSION}/yarn-v${YARN_VERSION}.tar.gz.asc" \
+    && gpg2 --verify "yarn-v${YARN_VERSION}.tar.gz.asc" \
+    && tar -xzf "yarn-v${YARN_VERSION}.tar.gz" \
+    && rm -rf "yarn-v${YARN_VERSION}.tar.gz" "yarn-v${YARN_VERSION}.tar.gz.asc" \
+    && cd /tmp/dist \
+    && sudo cp -p bin/yarn bin/yarn.js bin/yarnpkg /usr/local/bin/ \
+    && sudo cp -p lib/* /usr/local/lib/ \
+    && cd / \
+    && rm -rf /tmp/dist \
     && cd /tmp/tce/optional \
     && for PKG in acl.tcz \
                 libcap.tcz \
