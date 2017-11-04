@@ -21,7 +21,7 @@ RUN gpg2 --keyserver pgp.mit.edu \
     6A010C5166006599AA17F08146C2130DFD2497F5 # yarn gpg key
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 4.8.4
+ENV NODE_VERSION 4.8.5
 ENV YARN_VERSION 1.2.1
 
 RUN tce-load -wic coreutils \
