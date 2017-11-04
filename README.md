@@ -9,8 +9,8 @@ This provides a small but a fully functional [Node.js](https://nodejs.org/) runt
 - [`0.12-onbuild` (0.12/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/0.12/onbuild/Dockerfile)
 - [`4.8` (4.8/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.8/Dockerfile)
 - [`4.8-onbuild` (4.8/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/4.8/onbuild/Dockerfile)
-- [`6.10` (6.10/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/6.10/Dockerfile)
-- [`6.10-onbuild` (6.10/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/6.10/onbuild/Dockerfile)
+- [`6.11` (6.11/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/6.11/Dockerfile)
+- [`6.11-onbuild` (6.11/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/6.11/onbuild/Dockerfile)
 - [`7.10` (7.10/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/7.10/Dockerfile)
 - [`7.10-onbuild` (7.10/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/7.10/onbuild/Dockerfile)
 - [`8.4`, `latest` (7.10/Dockerfile)][Latest Dockerfile]
