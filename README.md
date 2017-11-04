@@ -13,8 +13,8 @@ This provides a small but a fully functional [Node.js](https://nodejs.org/) runt
 - [`6.11-onbuild` (6.11/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/6.11/onbuild/Dockerfile)
 - [`7.10` (7.10/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/7.10/Dockerfile)
 - [`7.10-onbuild` (7.10/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/7.10/onbuild/Dockerfile)
-- [`8.4`, `latest` (7.10/Dockerfile)][Latest Dockerfile]
-- [`8.4-onbuild` (7.10/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/8.4/onbuild/Dockerfile)
+- [`8.9`, `latest` (8.9/Dockerfile)][Latest Dockerfile]
+- [`8.9-onbuild` (8.9/onbuild/Dockerfile)](https://github.com/tatsushid/docker-tinycore-node/blob/master/8.9/onbuild/Dockerfile)
 
 ## How to use this image
 
@@ -24,4 +24,4 @@ This can be used in the same way as [Official Node.js Image](https://hub.docker.
 
 This doesn't contain a compiler, a linker and headers etc. so if you'd like to build a something addon for Node.js, first you need to install them by `tce-load` command. Please refer this image's [Dockerfile][Latest Dockerfile] which is a good example of installing those packages.
 
-[Latest Dockerfile]: https://github.com/tatsushid/docker-tinycore-node/blob/master/8.4/Dockerfile
+[Latest Dockerfile]: https://github.com/tatsushid/docker-tinycore-node/blob/master/8.9/Dockerfile
